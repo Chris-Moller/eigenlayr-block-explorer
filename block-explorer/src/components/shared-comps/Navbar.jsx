@@ -102,7 +102,7 @@ const Navbar = () => {
                   marginLeft: "0px",
                   margin: "auto",
                   fontWeight: "100",
-                  fontSize: "20pt"
+                  fontSize: "18pt"
                 }}
               >
                 Eigen Explorer
