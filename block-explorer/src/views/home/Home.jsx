@@ -56,7 +56,6 @@ const Home = () => {
         <Grid container sx={{
           backgroundColor: "black",
           width: "100%",
-          height: "200px",
           borderRadius: "10px",
           border: "solid",
           borderWidth: "0.5px",
