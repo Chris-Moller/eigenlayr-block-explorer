@@ -1,10 +1,8 @@
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import InputBase from '@mui/material/InputBase';
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 import { BsSearch } from "react-icons/bs";
 
 // const Link = styled(RouterLink)(() => ({
@@ -73,6 +71,7 @@ const Navbar = () => {
               sx={{
                 width: 200,
                 display: "flex",
+                marginLeft: "50px",
                 flexDirection: "row",
                 "& img": {
                   margin: "auto",
@@ -147,6 +146,7 @@ const Navbar = () => {
             paddingLeft: "6px",
             backgroundColor: "white",
             minWidth: "400px",
+            color: "black",
             [theme.breakpoints.down("sm")]: {
                 minWidth: "200px",
               },

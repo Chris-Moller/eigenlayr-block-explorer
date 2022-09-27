@@ -3,13 +3,17 @@ import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "../components/shared-comps/Navbar";
+import Footer from "../components/shared-comps/Footer"
 
 function DashboardLayout() {
   return (
-    <Box >
+    <Box sx={{
+      backgroundColor: "#282c34"
+    }} >
       <CssBaseline />
       <Navbar/>
         <Outlet />
+        <Footer/>
     </Box>
   );
 }

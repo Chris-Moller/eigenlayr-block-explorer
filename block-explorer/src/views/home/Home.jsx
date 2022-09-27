@@ -1,28 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LatestBlocks from "./LatestBlocks";
 import LatestTxns from "./LatestTxns";
+import Dashboard from "./Dashboard";
+const interact = require("../../utils/interact");
 
 const Home = () => {
-  // const navigate = useNavigate();
-  const theme = useTheme();
+  const [latestDash, setLatestDash] = useState([]);
 
   const load = async () => {
-    console.log("hello");
+    const dash = await interact.getBlocks();
+    console.log(dash);
+    setLatestDash(dash);
   };
 
   useEffect(() => {
     load();
   }, []);
+  // const navigate = useNavigate();
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
         // backgroundColor: "#00001D",
         paddingTop: "250px",
-        [theme.breakpoints.down("xl")]: {
+        [theme.breakpoints.down("xxl")]: {
           paddingTop: "250px",
+        },
+        [theme.breakpoints.down("xl")]: {
+          paddingTop: "100px",
         },
         [theme.breakpoints.down("md")]: {
           paddingTop: "150px",
@@ -35,6 +44,7 @@ const Home = () => {
       <Box
         sx={{
           display: "flex",
+          flexDirection: "column",
           margin: "auto",
           maxWidth: "1300px",
           paddingBottom: "120px",
@@ -53,25 +63,24 @@ const Home = () => {
           },
         }}
       >
-        <Grid container sx={{
-          backgroundColor: "black",
-          width: "100%",
-          borderRadius: "10px",
-          border: "solid",
-          borderWidth: "0.5px",
-          borderColor: "#817dac",
-          padding: "32px"
+        <Grid container
+        sx={{
+          width:"100%",
         }}>
-          <Grid item md={6}>
-          <LatestBlocks/>
+          <Grid item md={12}>
+            <Dashboard latestDash={latestDash}/>
           </Grid>
-          {/* <div style={{
-            width: "0.5px",
-            backgroundColor: "#817dac",
-            height: "100%"
-          }}></div> */}
-          <Grid item md={6}>
-          <LatestTxns/>
+        </Grid>
+        <Grid
+          container
+          spacing={2}
+        >
+          <Grid item xs={6} sx={{
+          }}>
+            <LatestBlocks latestDash={latestDash} />
+          </Grid>
+          <Grid item xs={6}>
+            <LatestTxns latestDash={latestDash} />
           </Grid>
         </Grid>
       </Box>

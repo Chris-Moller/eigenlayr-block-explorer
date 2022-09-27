@@ -1,10 +1,9 @@
 const axios = require("axios").default;
-const { ethers } = require("ethers");
 
 
-const getBlocks = async (val) => {
+const getBlocks = async () => {
   try {
-    const queryArr = await axios.get(`http://localhost:5000/querys/latestblocks`);
+    const queryArr = await axios.get(`http://localhost:5001/querys/latestblocks`);
     return queryArr.data;
   } catch (error) {
     return error;

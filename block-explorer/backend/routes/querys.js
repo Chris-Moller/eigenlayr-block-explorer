@@ -18,7 +18,7 @@ router.route("/latestblocks").get((req, res) => {
         ethers.BigNumber.from(res.data.result.number).toString()
       );
       let limit = bN - 1;
-      while (limit > bN - 10) {
+      while (limit > bN - 11) {
         try {
           let hexLim = ethers.utils.hexlify(limit);
           const res = await axios.post(eigenNode, {
@@ -41,6 +41,25 @@ router.route("/latestblocks").get((req, res) => {
   };
   getHomePGBlocks()
     .then((blocks) => res.json(blocks));
+});
+
+router.route("/txn").get((req, res) => {
+  const txHash =  req.body.hash
+  const getTxn = async () => {
+    try {
+      const res = await axios.post(eigenNode, {
+        jsonrpc: "2.0",
+        method: "eth_getTransactionReceipt",
+        params: [`${txHash}`],
+        id: 1,
+      });
+      return res.data.result;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  getTxn()
+    .then((txn) => res.json(txn));
 });
 
 // router.route("/counter/type").post((req, res) => {

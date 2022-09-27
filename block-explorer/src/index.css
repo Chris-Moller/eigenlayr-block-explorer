@@ -9,6 +9,7 @@
 
 body {
   margin: 0;
+  background-color: #282c34;
   font-family: "ProximaNova", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,6 +18,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.color {
+  background-color: #d4dfef;
+  background-color: #424869;
 }
 
 
