@@ -13,6 +13,18 @@ const getBlocks = async () => {
 
 exports.getBlocks = getBlocks;
 
+const search = async (val) => {
+  try {
+    const queryVal = await axios.get(`http://localhost:5001/querys/search/${val}`)
+    return queryVal.data
+  } catch (err) {
+    return err;
+  }
+
+}
+
+exports.search = search;
+
 
 
 // const eigenNode = "http://50.18.138.183:8545/";

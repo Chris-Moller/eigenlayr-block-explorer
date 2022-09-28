@@ -18,37 +18,19 @@ const ChartBar = ({ value, max, blockNum }) => {
         }}
         variant="p"
       >
-        <span>{ethers.BigNumber.from(blockNum).toString()}</span>
-      </Typography>
-      {hoverEff ? <div className="hover:cursor-pointer" style={{
-            position: "absolute",
-            margin: "auto",
-            width: "100%"
-        }}>
-            <div className="hover:cursor-pointer"  style={{
-            position: "absolute",
-                
-            borderRadius: "5px",
-            backgroundColor: "black",
-            display: "flex",
-            flexDirection: "row",
-            width: 72,
-            padding: "5px"
-            
-        }}>
-            <Typography variant="p" className="hover:cursor-pointer" sx={{
-                color: "white"
+        {hoverEff ? (<Typography variant="p" className="hover:cursor-pointer" sx={{
+                color: "black"
             }}>
-                Txns: {value}
+                {value} Txns 
 
-            </Typography>
-            </div>
-        </div> : null}
+            </Typography>) : (<span>{ethers.BigNumber.from(blockNum).toString()}</span>)}
+        
+      </Typography>
 
       <Box
         className="hover:cursor-pointer"
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
+        onMouseOver={() => setHover(true)}
+        onMouseOut={() => setHover(false)}
         sx={{
           display: "flex",
           flexDirection: "column",

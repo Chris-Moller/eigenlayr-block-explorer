@@ -25,10 +25,9 @@ const Home = () => {
   return (
     <Box
       sx={{
-        // backgroundColor: "#00001D",
-        paddingTop: "250px",
+        paddingTop: "150px",
         [theme.breakpoints.down("xxl")]: {
-          paddingTop: "250px",
+          paddingTop: "150px",
         },
         [theme.breakpoints.down("xl")]: {
           paddingTop: "100px",

@@ -34,6 +34,21 @@ export default function Footer() {
         [theme.breakpoints.down("md")]: { paddingBottom: 0 },
       }}
     >
+          <Box sx={{
+      maxWidth: 1300,
+      margin: "auto",
+    
+      [theme.breakpoints.down("xl")]: { maxWidth: 1000 },
+      [theme.breakpoints.down("lg")]: { maxWidth: 750 },
+      [theme.breakpoints.down("md")]: { maxWidth: 600 },
+      [theme.breakpoints.down("sm")]: {
+        maxWidth: "450px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        maxWidth: "450px",
+        padding: "0 0px"
+      },
+    }}>
       <Box>
         <Grid
           container
@@ -227,6 +242,7 @@ export default function Footer() {
       >
         © 2022 Eigenlayer, all rights reserved
       </Typography>
+    </Box>
     </Box>
   );
 }

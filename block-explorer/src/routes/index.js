@@ -20,6 +20,10 @@ export default function Router() {
           path: "",
           element: <Home />,
         },
+        {
+          path: "/search",
+          element: <Result />,
+        },
       ]
     }
   ]);
@@ -28,6 +32,10 @@ export default function Router() {
 
 const Home = Loadable(
   lazy(() => import("../views/home/Home"))
+);
+
+const Result = Loadable(
+  lazy(() => import("../views/result/Result"))
 );
 
 

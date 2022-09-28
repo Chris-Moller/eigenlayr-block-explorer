@@ -39,27 +39,60 @@ router.route("/latestblocks").get((req, res) => {
       return resArr;
     }
   };
-  getHomePGBlocks()
-    .then((blocks) => res.json(blocks));
+  getHomePGBlocks().then((blocks) => res.json(blocks));
 });
 
-router.route("/txn").get((req, res) => {
-  const txHash =  req.body.hash
-  const getTxn = async () => {
-    try {
-      const res = await axios.post(eigenNode, {
-        jsonrpc: "2.0",
-        method: "eth_getTransactionReceipt",
-        params: [`${txHash}`],
-        id: 1,
-      });
-      return res.data.result;
-    } catch (err) {
-      console.log(err);
+router.route("/search/:val").get((req, res) => {
+  const val = req.params.val;
+  const first = val.substring(0,2)
+  const getRes = async () => {
+    if (first === "0x") {
+      if (val.length === 66) {
+        try {
+          const res = await axios.post(eigenNode, {
+            jsonrpc: "2.0",
+            method: "eth_getTransactionByHash",
+            params: [`${val}`],
+            id: 1,
+          });
+          return res.data;
+        } catch (err) {
+          console.log(err);
+        }
+      } else if (val.length === 42) {
+        try {
+          const res = await axios.post(eigenNode, {
+            jsonrpc: "2.0",
+            method: "eth_getCode",
+            params: [`${val}`, "latest"],
+            id: 1,
+          });
+          const bal = await axios.post(eigenNode, {
+            jsonrpc: "2.0",
+            method: "eth_getBalance",
+            params: [`${val}`, "latest"],
+            id: 1,
+          });
+          return [res.data.result, bal.data.result];
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    } else {
+      try {
+        const res = await axios.post(eigenNode, {
+          jsonrpc: "2.0",
+          method: "eth_getBlockByNumber",
+          params: [ethers.BigNumber.from(val).toHexString(), true],
+          id: 1,
+        });
+        return res.data.result;
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
-  getTxn()
-    .then((txn) => res.json(txn));
+  getRes().then((txn) => res.json(txn));
 });
 
 // router.route("/counter/type").post((req, res) => {

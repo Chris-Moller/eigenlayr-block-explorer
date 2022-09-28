@@ -4,6 +4,8 @@ import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import InputBase from '@mui/material/InputBase';
 import { BsSearch } from "react-icons/bs";
+import { useState } from "react";
+const interact = require("../../utils/interact");
 
 // const Link = styled(RouterLink)(() => ({
 //   textDecoration: "none",
@@ -36,6 +38,12 @@ import { BsSearch } from "react-icons/bs";
 const Navbar = () => {
   const navigate = useNavigate();
   const theme = useTheme();
+  const [searchVal, setSearchVal] = useState()
+
+  const searchHandler = async () => {
+    const search = await interact.search(searchVal);
+    console.log(search)
+  };
 
 
 
@@ -123,6 +131,7 @@ const Navbar = () => {
       >
         <BsSearch
         className=" bg-dark-purple hover:cursor-pointer transition-all hover:bg-light-purple"
+        onClick={searchHandler}
           style={{
             color: "white",
             height: "auto",
@@ -137,6 +146,7 @@ const Navbar = () => {
         />
         <InputBase
         fullWidth
+        onChange={(e) => setSearchVal(e.target.value)}
           sx={{
             borderTopRightRadius: "5px",
             borderBottomRightRadius: "5px",
