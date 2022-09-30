@@ -1,13 +1,13 @@
 # Setup
 
-Ensure modules are installed in both /`backend` and the main project directory.
+Ensure modules are installed in both /`backend` and /`block-explorer`.
 
 # Spin up local server
 
-While in /`backend` run: nodemon server
+While in /`backend` run: **nodemon server**
 
 # React local host:
-while in the main project directory run: npm start
+while in `block-explorer` run: **npm start**
 
 
 
