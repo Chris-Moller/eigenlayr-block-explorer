@@ -3,8 +3,18 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { ethers } from "ethers";
 import { Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const LatestBlocks = ({ latestDash }) => {
+  const navigate = useNavigate()
+  const toBkHandler = (bkNum) => {
+    navigate({
+      pathname: `/search`,
+      search: `?v=${Number(
+        ethers.BigNumber.from(bkNum).toString()
+      )}`,
+    });
+  };
 
 
   return (
@@ -90,6 +100,8 @@ const LatestBlocks = ({ latestDash }) => {
           {latestDash ? (
             latestDash.map((result) => (
               <Box
+                className=" hover:bg-dark-purple hover:cursor-pointer transition-all"
+                onClick={() => toBkHandler(Number(ethers.BigNumber.from(result.number).toString()))}
                 sx={{
                   display: "flex",
                   backgroundColor: "#424869",

@@ -9,11 +9,21 @@ const interact = require("../../utils/interact");
 
 const Home = () => {
   const [latestDash, setLatestDash] = useState([]);
+  const [txList, setTxList] = useState([]);
 
   const load = async () => {
     const dash = await interact.getBlocks();
     console.log(dash);
     setLatestDash(dash);
+    let txArr = []
+    for (let i = 0; i < dash.length; i++) {
+      if (dash[i].transactions.length > 0) {
+        txArr.push(...dash[i].transactions)
+      }
+    }
+    setTxList(txArr);
+    console.log(txArr)
+
   };
 
   useEffect(() => {
@@ -79,7 +89,7 @@ const Home = () => {
             <LatestBlocks latestDash={latestDash} />
           </Grid>
           <Grid item xs={6}>
-            <LatestTxns latestDash={latestDash} />
+            <LatestTxns txList={txList} />
           </Grid>
         </Grid>
       </Box>

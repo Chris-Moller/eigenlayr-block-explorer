@@ -2,8 +2,17 @@ import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { ethers } from "ethers";
 import { Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-const LatestTxns = ({ latestDash }) => {
+const LatestTxns = ({ txList }) => {
+  const navigate = useNavigate()
+
+  const toTxnHandler = (hash) => {
+    navigate({
+      pathname: `/search`,
+      search: `?v=${hash}`,
+    });
+  }
 
   return (
     <Box
@@ -47,7 +56,7 @@ const LatestTxns = ({ latestDash }) => {
               width: "100%",
             }}
           >
-            <Grid container sx={{}}>
+            <Grid container>
               <Grid item md={4}>
                 <Typography
                   sx={{
@@ -57,7 +66,7 @@ const LatestTxns = ({ latestDash }) => {
                   }}
                   variant="h6"
                 >
-                  <h6>Block Number</h6>
+                  <h6>Hash</h6>
                 </Typography>
               </Grid>
               <Grid item md={4}>
@@ -69,7 +78,7 @@ const LatestTxns = ({ latestDash }) => {
                   }}
                   variant="h6"
                 >
-                  <h6>Timestamp</h6>
+                  <h6>From</h6>
                 </Typography>
               </Grid>
               <Grid item md={4}>
@@ -81,13 +90,13 @@ const LatestTxns = ({ latestDash }) => {
                   }}
                   variant="h6"
                 >
-                  <h6>Gas Used</h6>
+                  <h6>To</h6>
                 </Typography>
               </Grid>
             </Grid>
           </Box>
-          {latestDash.length < 1 ? (
-            latestDash.map((result) => (
+          {txList.length > 0 ? (
+            txList.map((result) => (
               <Box
                 sx={{
                   display: "flex",
@@ -100,14 +109,21 @@ const LatestTxns = ({ latestDash }) => {
               >
                 <Grid container>
                   <Grid item xs={4}>
-                    <span
-                      style={{
-                        fontSize: "12pt",
-                        color: "white",
-                      }}
-                    >
-                      {ethers.BigNumber.from(result.number).toString()}
-                    </span>
+                  <textarea
+                  className="text-dark-purple  hover:text-purple-grad hover:cursor-pointer transition-all"
+                  onClick={(e) => toTxnHandler(e.target.value)}
+                  readOnly={true}
+                    style={{
+                        width: "100%",
+                      fontSize: "10pt",
+                      marginTop: "auto",
+                      marginBottom: "auto",
+                      outline: "none"
+                      
+                    }}
+                  >
+                      {result.hash}
+                    </textarea>
                   </Grid>
                   <Grid item xs={4}>
                     <div>

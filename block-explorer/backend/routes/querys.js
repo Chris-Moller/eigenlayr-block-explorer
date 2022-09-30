@@ -55,7 +55,7 @@ router.route("/search/:val").get((req, res) => {
             params: [`${val}`],
             id: 1,
           });
-          return res.data;
+          return [res.data.result, {type: "txn"}];
         } catch (err) {
           console.log(err);
         }
@@ -73,7 +73,7 @@ router.route("/search/:val").get((req, res) => {
             params: [`${val}`, "latest"],
             id: 1,
           });
-          return [res.data.result, bal.data.result];
+          return [val, res.data.result, bal.data.result, {type: "acc"}];
         } catch (err) {
           console.log(err);
         }
@@ -86,7 +86,7 @@ router.route("/search/:val").get((req, res) => {
           params: [ethers.BigNumber.from(val).toHexString(), true],
           id: 1,
         });
-        return res.data.result;
+        return [res.data.result, {type: "block"}];
       } catch (err) {
         console.log(err);
       }
