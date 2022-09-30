@@ -34,6 +34,13 @@ const Result = () => {
     });
   };
 
+  const toAccHandler = () => {
+    navigate({
+      pathname: `/search`,
+      search: `?v=${searchRes[0].from}`,
+    });
+  }
+
   const toBkHandler = () => {
     navigate({
       pathname: `/search`,
@@ -765,6 +772,8 @@ const Result = () => {
                         <h6>From:</h6>
                       </Typography>
                       <Typography
+                        onClick={toAccHandler}
+                        
                         variant="h6"
                         sx={{
                           color: "black",
@@ -775,7 +784,7 @@ const Result = () => {
                           marginLeft: "35px",
                         }}
                       >
-                        <h6>{searchRes[0].from}</h6>
+                        <h6 className="text-dark-purple  hover:text-purple-grad hover:cursor-pointer transition-all">{searchRes[0].from}</h6>
                       </Typography>
                     </Box>
                     <Box
@@ -792,6 +801,7 @@ const Result = () => {
                     >
                       <Typography
                         variant="h6"
+                        
                         sx={{
                           color: "black",
                           fontSize: "16pt",
@@ -802,6 +812,7 @@ const Result = () => {
                       </Typography>
                       <Typography
                         variant="h6"
+                        onClick={toAccHandler}
                         sx={{
                           color: "black",
                           fontSize: "12pt",
@@ -811,7 +822,7 @@ const Result = () => {
                           marginLeft: "35px",
                         }}
                       >
-                        <h6>{searchRes[0].to}</h6>
+                        <h6 className="text-dark-purple  hover:text-purple-grad hover:cursor-pointer transition-all">{searchRes[0].to}</h6>
                       </Typography>
                     </Box>
                     <Box
@@ -1138,6 +1149,7 @@ const Result = () => {
                     display: "flex",
                     flexDirection: "row",
                     marginBottom: "20px",
+                    width: "100%"
                   }}
                 >
                   <Typography
@@ -1168,6 +1180,11 @@ const Result = () => {
                   >
                     <p>{searchRes[0]}</p>
                   </Typography>
+                  {searchRes[1] !== "0x" ? (<button className=" bg-dark-purple hover:cursor-pointer transition-all hover:bg-light-purple" style={{
+                    marginLeft: "auto",
+                    padding: "5px 25px",
+                    borderRadius: "5px"
+                  }}>Verify</button>) : (null)}
                 </Box>
                 {searchRes[1] === "0x" ? (
                   <Box
@@ -1295,6 +1312,7 @@ const Result = () => {
                       >
                         <h6>{searchRes[0]}</h6>
                       </Typography>
+                      
                     </Box>
                     <Box
                       sx={{
