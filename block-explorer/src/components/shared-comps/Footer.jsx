@@ -31,6 +31,8 @@ export default function Footer() {
       sx={{
         backgroundColor: "black",
         padding: "52px 20px 85px",
+        position: "relative",
+        bottom: 0,
         [theme.breakpoints.down("md")]: { paddingBottom: 0 },
       }}
     >

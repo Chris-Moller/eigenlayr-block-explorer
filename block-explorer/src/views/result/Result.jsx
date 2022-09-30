@@ -65,6 +65,7 @@ const Result = () => {
   return (
     <Box
       sx={{
+        minHeight: "100vh",
         paddingTop: "150px",
         [theme.breakpoints.down("xxl")]: {
           paddingTop: "150px",
@@ -84,8 +85,12 @@ const Result = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          margin: "4.5rem",
+          maxWidth: "1500px",
+          margin: "auto",
           paddingBottom: "120px",
+          [theme.breakpoints.down("xxl")]: {
+            margin: "4.5rem",
+          },
           [theme.breakpoints.down("md")]: {
             margin: "1rem",
           },

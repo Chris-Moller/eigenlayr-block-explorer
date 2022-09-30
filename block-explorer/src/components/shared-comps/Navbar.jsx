@@ -72,7 +72,10 @@ const Navbar = () => {
             marginLeft: "auto",
             marginRight: "auto",
             width: "100%",
-            maxWidth: "1300px",
+            maxWidth: "1500px",
+            [theme.breakpoints.down("xxl")]: {
+              maxWidth: "1300px",
+            },
             display: "flex",
             flexWrap: "wrap",
             flexDirection: "row",

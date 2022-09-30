@@ -7,15 +7,13 @@ import Footer from "../components/shared-comps/Footer"
 
 function DashboardLayout() {
   return (
-    <Box sx={{
-      minHeight: "100vh",
-      backgroundColor: "#282c34"
-    }} >
+<>
       <CssBaseline />
       <Navbar/>
         <Outlet />
         <Footer/>
-    </Box>
+        </>
+
   );
 }
 

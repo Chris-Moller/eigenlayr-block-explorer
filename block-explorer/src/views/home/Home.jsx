@@ -35,6 +35,7 @@ const Home = () => {
   return (
     <Box
       sx={{
+        minHeight: "100vh",
         paddingTop: "150px",
         [theme.breakpoints.down("xxl")]: {
           paddingTop: "150px",

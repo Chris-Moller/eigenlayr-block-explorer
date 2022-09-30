@@ -33,7 +33,7 @@ const LatestTxns = ({ txList }) => {
           marginBottom: "20px",
         }}
       >
-        <h1>Latest Transactions</h1>
+        <h1>Latest Transactions (10 blocks)</h1>
       </Typography>
       <Box
         sx={{
@@ -98,6 +98,8 @@ const LatestTxns = ({ txList }) => {
           {txList.length > 0 ? (
             txList.map((result) => (
               <Box
+              className=" hover:bg-dark-purple hover:cursor-pointer transition-all"
+                  onClick={() => toTxnHandler(result.hash)}
                 sx={{
                   display: "flex",
                   backgroundColor: "#424869",
@@ -107,56 +109,48 @@ const LatestTxns = ({ txList }) => {
                   textAlign: "center",
                 }}
               >
-                <Grid container>
-                  <Grid item xs={4}>
-                  <textarea
-                  className="text-dark-purple  hover:text-purple-grad hover:cursor-pointer transition-all"
-                  onClick={(e) => toTxnHandler(e.target.value)}
-                  readOnly={true}
+                <Grid container spacing={2}>
+                  <Grid item xs={4} sx={{
+                    overflow: "hidden"
+                  }}>
+                  <span
+                  className=" hover:bg-dark-purple hover:cursor-pointer transition-all"
                     style={{
                         width: "100%",
-                      fontSize: "10pt",
+                        fontSize: "12pt",
                       marginTop: "auto",
                       marginBottom: "auto",
-                      outline: "none"
+                      outline: "none",
                       
                     }}
                   >
                       {result.hash}
-                    </textarea>
+                    </span>
                   </Grid>
-                  <Grid item xs={4}>
-                    <div>
+                  <Grid item xs={4} sx={{
+                    overflow: "hidden"
+                  }}>
                       <span
                         style={{
                           fontSize: "12pt",
                           color: "white",
                         }}
                       >
-                        {Number(
-                          Date.now() / 1000 -
-                            ethers.BigNumber.from(result.timestamp).toString()
-                        ).toFixed(0)}
+                        {
+                          result.from}
                       </span>
-                      <span
-                        style={{
-                          marginLeft: "5px",
-                          fontSize: "10pt",
-                          color: "white",
-                        }}
-                      >
-                        secs ago
-                      </span>
-                    </div>
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item xs={4} sx={{
+                    overflow: "hidden"
+                  }}>
                     <span
                       style={{
                         fontSize: "12pt",
                         color: "white",
+                        
                       }}
                     >
-                      {ethers.BigNumber.from(result.gasUsed).toString()}
+                      {result.to}
                     </span>
                   </Grid>
                 </Grid>
