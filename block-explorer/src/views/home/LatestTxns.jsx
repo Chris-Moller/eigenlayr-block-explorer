@@ -98,6 +98,7 @@ const LatestTxns = ({ txList }) => {
           {txList.length > 0 ? (
             txList.map((result) => (
               <Box
+              key={result.hash}
               className=" hover:bg-dark-purple hover:cursor-pointer transition-all"
                   onClick={() => toTxnHandler(result.hash)}
                 sx={{

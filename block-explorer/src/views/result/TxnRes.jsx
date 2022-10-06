@@ -6,7 +6,15 @@ import { useNavigate } from "react-router-dom";
 
 const TxnRes = ({ searchRes }) => {
     const navigate = useNavigate();
+
     const toAccHandler = () => {
+        navigate({
+          pathname: `/search`,
+          search: `?v=${searchRes[0].to}`,
+        });
+      };
+
+      const fromAccHandler = () => {
         navigate({
           pathname: `/search`,
           search: `?v=${searchRes[0].from}`,
@@ -123,7 +131,7 @@ const TxnRes = ({ searchRes }) => {
                         <h6>From:</h6>
                       </Typography>
                       <Typography
-                        onClick={toAccHandler}
+                        onClick={fromAccHandler}
                         variant="h6"
                         sx={{
                           color: "black",

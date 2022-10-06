@@ -26,6 +26,20 @@ const search = async (val) => {
 exports.search = search;
 
 
+const checkVerify = async (source) => {
+  try {
+    const comp =  await axios.post(`http://localhost:5001/solc/compile`, {
+      sourceCode: source
+    })
+    return comp.data
+  } catch (error) {
+    return error;
+  }
+}
+
+exports.checkVerify = checkVerify;
+
+
 
 // const eigenNode = "http://50.18.138.183:8545/";
 

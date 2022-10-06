@@ -14,7 +14,7 @@ const Chart = ({ latestDash }) => {
       }}
     >
       {latestDash.map((count) => (
-        <Grid item xs={1.2}>
+        <Grid key={count.number} item xs={1.2}>
           <ChartBar
             style={{
               marginTop: "auto",

@@ -100,6 +100,7 @@ const LatestBlocks = ({ latestDash }) => {
           {latestDash ? (
             latestDash.map((result) => (
               <Box
+                key={result.number}
                 className=" hover:bg-dark-purple hover:cursor-pointer transition-all"
                 onClick={() => toBkHandler(Number(ethers.BigNumber.from(result.number).toString()))}
                 sx={{

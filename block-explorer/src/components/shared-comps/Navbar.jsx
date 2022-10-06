@@ -41,6 +41,7 @@ const Navbar = () => {
 
   const searchHandler = async (e) => {
     e.preventDefault()
+    console.log(searchVal)
     navigate({
       pathname: `/search`,
       search: `?v=${searchVal}`

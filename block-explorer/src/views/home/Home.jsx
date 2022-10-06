@@ -15,15 +15,14 @@ const Home = () => {
     const dash = await interact.getBlocks();
     console.log(dash);
     setLatestDash(dash);
-    let txArr = []
+    let txArr = [];
     for (let i = 0; i < dash.length; i++) {
       if (dash[i].transactions.length > 0) {
-        txArr.push(...dash[i].transactions)
+        txArr.push(...dash[i].transactions);
       }
     }
     setTxList(txArr);
-    console.log(txArr)
-
+    console.log(txArr);
   };
 
   useEffect(() => {
@@ -73,20 +72,18 @@ const Home = () => {
           },
         }}
       >
-        <Grid container
-        sx={{
-          width:"100%",
-        }}>
-          <Grid item md={12}>
-            <Dashboard latestDash={latestDash}/>
-          </Grid>
-        </Grid>
         <Grid
           container
-          spacing={2}
+          sx={{
+            width: "100%",
+          }}
         >
-          <Grid item xs={6} sx={{
-          }}>
+          <Grid item md={12}>
+            <Dashboard latestDash={latestDash} />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={6} sx={{}}>
             <LatestBlocks latestDash={latestDash} />
           </Grid>
           <Grid item xs={6}>
