@@ -106,14 +106,14 @@ const Navbar = () => {
                   cursor: "pointer",
                   
                 }}
-                src="/images/EigenPlaceHolder.png"
+                src="/images/EL-icon.svg"
                 alt=""
               />
               <h1
                 style={{
                   cursor: "pointer",
                   color: "white",
-                  marginLeft: "0px",
+                  marginLeft: "6px",
                   margin: "auto",
                   fontWeight: "100",
                   fontSize: "18pt"

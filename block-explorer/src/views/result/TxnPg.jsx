@@ -3,8 +3,9 @@ import { Box } from "@mui/system";
 import { ethers } from "ethers";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { timeSet } from "../../utils/utils";
 
-const TxnPg = ({ txnList, bkNum }) => {
+const TxnPg = ({ txnList, bkNum, cTimeStamp }) => {
     const navigate = useNavigate()
 
     const titleHandler = () => {

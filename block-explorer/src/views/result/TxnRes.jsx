@@ -2,9 +2,10 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
+import { timeSet } from "../../utils/utils";
 
 
-const TxnRes = ({ searchRes }) => {
+const TxnRes = ({ searchRes, cTimeStamp }) => {
     const navigate = useNavigate();
 
     const toAccHandler = () => {

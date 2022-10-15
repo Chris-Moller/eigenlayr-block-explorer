@@ -3,10 +3,11 @@ import { Box } from "@mui/system";
 import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
 import TxnPg from "./TxnPg";
+import { timeSet } from "../../utils/utils";
 
 
 
-const BlockRes = ({ showTxns, txnList, searchRes }) => {
+const BlockRes = ({ showTxns, txnList, searchRes, cTimeStamp }) => {
     const navigate = useNavigate();
 
     const txHandler = () => {
@@ -203,25 +204,13 @@ const BlockRes = ({ showTxns, txnList, searchRes }) => {
                           }}
                         >
                           <h6>
-                            {Number(
-                              Date.now() / 1000 -
-                                ethers.BigNumber.from(
-                                  searchRes[0].timestamp
-                                ).toString()
-                            ).toFixed(0)}
+                            {
+                              
+                               
+                                  timeSet(cTimeStamp, parseInt(searchRes[0].timestamp))
+                                }
                           </h6>
                         </Typography>
-                        <span
-                          style={{
-                            marginLeft: "5px",
-                            fontSize: "10pt",
-                            marginTop: "auto",
-                            marginBottom: "auto",
-                            color: "black",
-                          }}
-                        >
-                          secs ago
-                        </span>
                       </Box>
                       <Box
                         sx={{

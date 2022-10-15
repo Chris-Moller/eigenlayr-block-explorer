@@ -14,6 +14,7 @@ const Result = () => {
   const [showTxns, setShowTxns] = useState(false);
   const [searchRes, setSearchRes] = useState();
   const [txnList, setTxnArr] = useState([]);
+  const [cTimeStamp, setTimeStamp] = useState();
 
   const load = async () => {
     const searchVal = searchParams.get("v");
@@ -22,6 +23,9 @@ const Result = () => {
     setType(search[search.length - 1].type);
     setSearchRes(search);
     console.log(search);
+
+    const currentTime = Date.now();
+    setTimeStamp(currentTime);
     if (txns === "true") {
       setTxnArr(search[0].transactions);
       setShowTxns(true);
@@ -85,6 +89,7 @@ const Result = () => {
           >
             {type === "block" ? (
               <BlockRes
+                cTimeStamp={cTimeStamp}
                 searchRes={searchRes}
                 showTxns={showTxns}
                 txnList={txnList}
@@ -92,11 +97,13 @@ const Result = () => {
             ) : null}
             {type === "txn" ? 
               <TxnRes 
+                cTimeStamp={cTimeStamp}
                 searchRes={searchRes} 
               /> 
             : null}
             {type === "acc" ? 
               <AccRes 
+                cTimeStamp={cTimeStamp}
                 searchRes={searchRes} 
               /> 
             : null}

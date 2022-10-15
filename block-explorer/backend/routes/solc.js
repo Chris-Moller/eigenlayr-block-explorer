@@ -1,3 +1,4 @@
+const ethers = require('ethers')
 const router = require("express").Router();
 const solc = require("solc");
 
