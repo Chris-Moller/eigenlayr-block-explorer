@@ -1,7 +1,7 @@
 const WebSocket = require('ws')
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 require('dotenv').config();
 
 let eigenWS = new WebSocket("ws://13.56.165.44:8546");
@@ -12,13 +12,13 @@ const port = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
-const uri = process.env.MONGO_URI;
-mongoose.connect(uri)
+// const uri = process.env.MONGO_URI;
+// mongoose.connect(uri)
 
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log("MongoDB database connection established successfully")
-})
+// const connection = mongoose.connection;
+// connection.once('open', () => {
+//     console.log("MongoDB database connection established successfully")
+// })
 
 eigenWS.onopen = function (e) {
     console.log("[open] Connection established");
@@ -29,8 +29,8 @@ eigenWS.onopen = function (e) {
   };
 
   eigenWS.onmessage = async(event) => {
-    const hello = await event.data;
-    console.log(hello)
+    const getItem = await event.data;
+    console.log(getItem)
   };
 
 const querysRouter = require('./routes/querys')
