@@ -7,7 +7,7 @@ Ensure modules are installed in both /`backend` and /`block-explorer`.
 While in /`backend` run: **nodemon server**
 
 # React local host:
-while in /`block-explorer` run: **npm start**
+while in /`eigenlayr-block-explorer` run: **npm start**
 
 
 
